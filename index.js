@@ -11,15 +11,16 @@ const app = express();
 app.use(bodyParser.json());
 
 var corsOptions = {
-    origin: 'http://localhost:3000'
+    origin: 'https://localhost:3000'
 };
 
-app.use(cors(corsOptions));
 app.use(session({ 
     secret: config.sessionSecret,
     resave: true,
     saveUninitialized: false
 }));
+app.use(cors(corsOptions));
+
 app.use(express.static(__dirname + '/public'));
 
 app.get('/api/profiles', profileCtrl.getFriendsProfiles);

@@ -26,8 +26,8 @@ var profiles = [
 
 module.exports = {
     getFriendsProfiles: function(req, res, next){
-        let currentUser = req.session.currentUser;
-        let friendsProfiles = [];
+        var currentUser = req.session.currentUser;
+        var friendsProfiles = [];
         for (var i = 0; i < profiles.length; i ++){
             if (currentUser.friends.includes(profiles[i].name)){
                 friendsProfiles.push(profiles[i]);
