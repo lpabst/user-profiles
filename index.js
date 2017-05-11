@@ -16,12 +16,16 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(session({ 
-    secret: config.sessionSecret
+    secret: config.sessionSecret,
+    resave: true,
+    saveUninitialized: false
 }));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/api/profiles', profileCtrl.getFriendsProfiles);
 
 app.post('/api/login', userCtrl.login);
+
 
 
 
